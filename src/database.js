@@ -1,16 +1,32 @@
 import mysql from 'mysql2'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const pool = mysql.createPool({
-    host: '127.0.0.1',
-    user: 'root',
-    password: '',
-    database: 'fitmentor_DB'
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE
 }).promise()
 
-async function getRowsCours() {
+export async function getAllCours() {
     const [result] = await pool.query("SELECT * FROM cours")
     return result 
 }
 
-const cours = await getRowsCours()
-console.log(cours)
+export async function getCours(id){
+    const [result] = await pool.query(`
+    SELECT * 
+    FROM cours 
+    WHERE id = ?
+    `, [id])
+    return result[0]
+}
+
+export async function createCours(title){
+    const [result] = await pool.query(`
+    INSERT INTO cours (title)
+    VALUES (?)
+    `, [title])
+    return getCours(result.insertId)
+}
