@@ -17,8 +17,8 @@ app.get("/cours/:id", async (req,res) => {
 })
 
 app.post("/cours", async (req,res) => {
-    const {title} = req.body
-    const cours = await createCours(title)
+    const {title,description,img,sport,price,irl,contents} = req.body
+    const cours = await createCours(title,description,img,sport,price,irl,contents)
     res.status(201).send(cours) 
 })
 
