@@ -23,10 +23,10 @@ export async function getCours(id){
     return result[0]
 }
 
-export async function createCours(title){
+export async function createCours(title,description,img,sport,price,irl,contents){
     const [result] = await pool.query(`
-    INSERT INTO cours (title)
-    VALUES (?)
-    `, [title])
+    INSERT INTO cours (title,description,img,sport,price,irl,contents)
+    VALUES (?,?,?,?,?,?,?,?)
+    `, [title,description,img,sport,price,irl,contents])
     return getCours(result.insertId)
 }
