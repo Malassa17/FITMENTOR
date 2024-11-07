@@ -1,9 +1,11 @@
 import express from 'express'
-import {getCours, getAllCours, createCours, getCoursBySport, createClient, getClient, getCommentaire, getCoach, createCoach, getAllCommentaires} from './database.js'
+import {getCours, getAllCours, createCours, getCoursBySport, createClient, getClient, getCommentaire, getCoach, createCoach, getAllCommentaires, createCommentaire, getAllFavoris, getFavoris, createFavoris, getAllObtenus, getObtenus, createObtenus, getContenus, createContenus} from './database.js'
 
 const app = express()
 
 app.use(express.json())
+
+//TODO REMPLACER idClient par GETCURRENTIDCLIENT !!!!!!!!!!!!!!!!!!!!!
 
 /////////////////METHODES GET////////////////////////////
 
@@ -49,7 +51,37 @@ app.get("/cours/:idCours/comments", async (req,res) => {
     res.send(comments)
 })
 
-//TODO get /favoris ; get /mescours ; get /cours/:id/contenu
+app.get("/client/:idClient/favoris/:id", async (req,res) => {
+    const id = req.params.id
+    const idClient = req.params.idClient
+    const favs = await getFavoris(id,idClient)
+    res.send(favs)
+})
+
+app.get("/client/:idClient/favoris", async (req,res) => {
+    const idClient = req.params.idClient
+    const favs = await getAllFavoris(idClient)
+    res.send(favs)
+})
+
+app.get("/client/:idClient/mescours/:id", async (req,res) => {
+    const id = req.params.id
+    const idClient = req.params.idClient
+    const obtenus = await getObtenus(id,idClient)
+    res.send(obtenus)
+})
+
+app.get("/client/:idClient/mescours", async (req,res) => {
+    const idClient = req.params.idClient
+    const obtenus = await getAllObtenus(idClient)
+    res.send(obtenus)
+})
+
+app.get("/mescours/content/:idCours", async (req,res) => {
+    const idCours = req.params.idCours
+    const content = await getContenus(idCours)
+    res.send(content)
+})
 
 /////////////////METHODES POST////////////////////////////
 
@@ -72,12 +104,28 @@ app.post("/coach", async (req,res) => {
 })
 
 app.post("/cours/comments", async (req,res) => {
-    const {identifier,pass,mail,tel,cours} = req.body
-    const coach = await createCoach(identifier,pass,mail,tel,cours)
-    res.status(201).send(coach) 
+    const {comment,cours} = req.body
+    const com = await createCommentaire(comment,cours)
+    res.status(201).send(com) 
 })
 
-//TODO post /favoris ; post /mescours ; post /cours/:id/contenu
+app.post("/client/favoris", async (req,res) => {
+    const {client,cours} = req.body
+    const fav = await createFavoris(client,cours)
+    res.status(201).send(fav)
+})
+
+app.post("/client/mescours", async (req,res) => {
+    const {client,cours} = req.body
+    const obtenus = await createObtenus(client,cours)
+    res.status(201).send(obtenus)
+})
+
+app.post("/mescours/content", async (req,res) => {
+    const {content,cours} = req.body
+    const contenus = await createContenus(content,cours)
+    res.status(201).send(contenus)
+})
 
 app.use((err, req, res, next) => {
     console.error(err.stack)

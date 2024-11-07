@@ -86,7 +86,33 @@ export async function getAllFavoris(idClient){
     return result
 }
 
-//TODO getObtenus etc... et getContenus etc...
+export async function getObtenus(id,idClient){
+    const [result] = await pool.query(`
+    SELECT cours
+    FROM obtenus
+    WHERE client = ?
+    AND id = ?
+    `, [idClient, id])
+    return result[0]
+}
+
+export async function getAllObtenus(idClient){
+    const [result] = await pool.query(`
+    SELECT cours
+    FROM obtenus
+    WHERE client = ?
+    `, [idClient])
+    return result[0]
+}
+
+export async function getContenus(idCours){
+    const [result] = await pool.query(`
+    SELECT content
+    FROM contenus
+    WHERE cours = ?
+    `, [idCours])
+    return result[0]
+}
 
 //////////METHODES CREATE///////////////////////////
 
@@ -119,7 +145,7 @@ export async function createCommentaire(comment,cours){
     INSERT INTO commentaires (comment,cours)
     VALUES (?,?)
     `, [comment,cours])
-    return getCommentaire(result.insertId)
+    return getCommentaire(result.insertId,result.cours)
 }
 
 export async function createFavoris(client,cours){
@@ -130,4 +156,18 @@ export async function createFavoris(client,cours){
     return getFavoris(result.insertId,result.client)
 }
 
-//TODO createObtenus et createContenus
+export async function createObtenus(client,cours){
+    const [result] = await pool.query(`
+    INSERT INTO obtenus (client,cours)
+    VALUES (?,?)
+    `, [client,cours])
+    return getObtenus(result.insertId,result.client)
+}
+
+export async function createContenus(content,cours){
+    const [result] = await pool.query(`
+    INSERT INTO contenus (content,cours)
+    VALUES (?,?)
+    `, [content,cours])
+    return getContenus(result.cours)
+}
