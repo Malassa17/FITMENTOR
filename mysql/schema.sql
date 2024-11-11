@@ -14,14 +14,13 @@ CREATE TABLE coach (
     identifier VARCHAR(50) NOT NULL,
     pass VARCHAR(50) NOT NULL,
     mail VARCHAR(50) NOT NULL,
-    tel VARCHAR(10) NOT NULL, 
-    cours INTEGER NOT NULL
+    tel VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE clients (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     identifier VARCHAR(50) NOT NULL,
-    pass VARCHAR(50) NOT NULL
+    pass VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE cours (
@@ -34,7 +33,7 @@ CREATE TABLE cours (
     irl BOOLEAN NOT NULL,
     coach INTEGER NOT NULL,
 
-    FOREIGN KEY (coach) REFERENCES coach(id),
+    FOREIGN KEY (coach) REFERENCES coach(id)
 );
 
 CREATE TABLE contenus (
@@ -55,18 +54,18 @@ CREATE TABLE commentaires (
 
 CREATE TABLE favoris (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    client,
-    cours,
+    client INTEGER NOT NULL,
+    cours INTEGER NOT NULL,
 
-    FOREIGN KEY (client) REFERENCES client(id),
+    FOREIGN KEY (client) REFERENCES clients(id),
     FOREIGN KEY (cours) REFERENCES cours(id)
 );
 
 CREATE TABLE obtenus (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    client,
-    cours,
+    client INTEGER NOT NULL,
+    cours INTEGER NOT NULL,
 
-    FOREIGN KEY (client) REFERENCES client(id),
+    FOREIGN KEY (client) REFERENCES clients(id),
     FOREIGN KEY (cours) REFERENCES cours(id)
 );

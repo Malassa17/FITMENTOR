@@ -48,6 +48,15 @@ export async function getClient(id){
     return result[0]
 }
 
+export async function getClientByIdentifier(identifier){
+    const [result] = await pool.query(`
+    SELECT *
+    FROM clients
+    WHERE identifier = ?
+    `, [identifier])
+    return result[0]
+}
+
 export async function getCoach(id){
     const [result] = await pool.query(`
     SELECT *
@@ -132,11 +141,11 @@ export async function createClient(identifier,pass){
     return getClient(result.insertId)
 }
 
-export async function createCoach(identifier,pass,mail,tel,cours){
+export async function createCoach(identifier,pass,mail,tel){
     const [result] = await pool.query(`
-    INSERT INTO clients (identifier,pass,mail,tel,cours)
-    VALUES (?,?,?,?,?)
-    `, [identifier,pass,mail,tel,cours])
+    INSERT INTO coach (identifier,pass,mail,tel)
+    VALUES (?,?,?,?)
+    `, [identifier,pass,mail,tel])
     return getCoach(result.insertId)
 }
 

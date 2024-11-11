@@ -1,5 +1,6 @@
 import express from 'express'
-import {getCours, getAllCours, createCours, getCoursBySport, createClient, getClient, getCommentaire, getCoach, createCoach, getAllCommentaires, createCommentaire, getAllFavoris, getFavoris, createFavoris, getAllObtenus, getObtenus, createObtenus, getContenus, createContenus} from './database.js'
+import bcrypt from 'bcrypt'
+import {getCours, getAllCours, createCours, getCoursBySport, createClient, getClient, getCommentaire, getCoach, createCoach, getAllCommentaires, createCommentaire, getAllFavoris, getFavoris, createFavoris, getAllObtenus, getObtenus, createObtenus, getContenus, createContenus, getClientByIdentifier} from './database.js'
 
 const app = express()
 
@@ -91,15 +92,33 @@ app.post("/cours", async (req,res) => {
     res.status(201).send(cours) 
 })
 
-app.post("/client", async (req,res) => {
+app.post("/signup", async (req,res) => {
     const {identifier,pass} = req.body
-    const client = await createClient(identifier,pass)
+    const hash = await bcrypt.hash(pass, 13)
+    const client = await createClient(identifier,hash)
     res.status(201).send(client) 
 })
 
+app.post('/login', async (req,res) => {
+    const {identifier, pass} = req.body
+    const client = await getClientByIdentifier(identifier)
+    const isUsernameFound = identifier === client.identifier //Not working at that time
+    if (!isUsernameFound){
+        res.send("Username not found")
+        return
+    }
+    const isValid = await bcrypt.compare(pass, client.pass)
+    if (!isValid){
+        res.send("Wrong password")
+        return
+    }
+
+    res.send("Credentials ok, connecting ...")
+})
+
 app.post("/coach", async (req,res) => {
-    const {identifier,pass,mail,tel,cours} = req.body
-    const coach = await createCoach(identifier,pass,mail,tel,cours)
+    const {identifier,pass,mail,tel} = req.body
+    const coach = await createCoach(identifier,pass,mail,tel)
     res.status(201).send(coach) 
 })
 
