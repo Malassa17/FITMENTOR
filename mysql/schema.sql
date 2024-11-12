@@ -1,3 +1,5 @@
+--Schéma de création de base de données, utilisé également pour générer le shéma relationnel de base de données
+
 CREATE DATABASE fitmentor_DB;
 USE fitmentor_DB;
 
