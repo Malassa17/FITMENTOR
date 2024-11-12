@@ -2,13 +2,12 @@ import express from 'express'
 import bcrypt from 'bcrypt'
 import {getCours, getAllCours, createCours, getCoursBySport, createClient, getClient, getCommentaire, getCoach, createCoach, getAllCommentaires, createCommentaire, getAllFavoris, getFavoris, createFavoris, getAllObtenus, getObtenus, createObtenus, getContenus, createContenus, getClientByIdentifier} from './database.js'
 
+/*Point d'entrée de l'application.
+  Ici on retrouve la mise en place du serveur express basé sur node.js ainsi que les routes qui constituent le back-end de l'application. */
+  
 const app = express()
 
 app.use(express.json())
-
-/*Point d'entrée de l'application.
-  Ici on retrouve la mise en place du serveur express basé sur node.js ainsi que les routes qui constituent le back-end de l'application. */
-
 
 /*Work in progress */
 //TODO REMPLACER idClient par GETCURRENTIDCLIENT !!!!!!!!!!!!!!!!!!!!!
