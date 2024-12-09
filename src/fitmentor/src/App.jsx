@@ -1,16 +1,41 @@
-import { getCours } from '../../database'
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import Navbar from './components/Navbar'
+import axios from 'axios'
 import './App.css'
+
+import Cours from './pages/cours'
+import Favoris from './pages/favoris'
+import Signup from './pages/signup'
+import Login from './pages/login'
 
 function App() {
 
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
+      <Router>
+          <Navbar />
+        <Routes>
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/MesCours" element={<Cours />} />
+          <Route path="/Favoris" element={<Favoris />} />
+        </Routes>
+      </Router>
+    </>
+  )
+}
+
+export default App
+
+
+
+/*
+<div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -30,8 +55,4 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
-  )
-}
-
-export default App
+*/

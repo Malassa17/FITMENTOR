@@ -1,5 +1,6 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
+import cors from 'cors'
 import {getCours, getAllCours, createCours, getCoursBySport, createClient, getClient, getCommentaire, getCoach, createCoach, getAllCommentaires, createCommentaire, getAllFavoris, getFavoris, createFavoris, getAllObtenus, getObtenus, createObtenus, getContenus, createContenus, getClientByIdentifier} from './database.js'
 
 /*Point d'entrée de l'application.
@@ -8,6 +9,7 @@ import {getCours, getAllCours, createCours, getCoursBySport, createClient, getCl
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 /*Work in progress */
 //TODO REMPLACER idClient par GETCURRENTIDCLIENT !!!!!!!!!!!!!!!!!!!!!
