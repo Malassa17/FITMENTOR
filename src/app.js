@@ -4,7 +4,7 @@ import {getCours, getAllCours, createCours, getCoursBySport, createClient, getCl
 
 /*Point d'entrée de l'application.
   Ici on retrouve la mise en place du serveur express basé sur node.js ainsi que les routes qui constituent le back-end de l'application. */
-  
+
 const app = express()
 
 app.use(express.json())
