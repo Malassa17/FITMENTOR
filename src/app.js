@@ -138,7 +138,8 @@ app.post('/login', async (req,res) => {
         return
     }
 
-    res.send("Credentials ok, connecting ...")
+    var id = client.identifier
+    res.send("Credentials ok, connecting ...", id)
 })
 
 /*Post un coach */

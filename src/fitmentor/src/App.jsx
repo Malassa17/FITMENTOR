@@ -1,58 +1,49 @@
-import { useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from 'react-router-dom';
-import Navbar from './components/Navbar'
-import axios from 'axios'
 import './App.css'
+import Navbar from './components/Navbar'
+import Cours from './components/AllCours';
 
-import Cours from './pages/cours'
+import MesCours from './pages/mescours'
 import Favoris from './pages/favoris'
 import Signup from './pages/signup'
 import Login from './pages/login'
 
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
 function App() {
+
+  const [data, setData] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/cours').then(function (response) {
+          setData(response.data)
+        })
+    }, [])
 
   return (
     <>
       <Router>
-          <Navbar />
+        <Navbar />
         <Routes>
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/MesCours" element={<Cours />} />
+          <Route path="/MesCours" element={<MesCours />} />
           <Route path="/Favoris" element={<Favoris />} />
         </Routes>
       </Router>
+
+      <h1>Voici les cours offerts par nos coach de qualités : </h1>
+
+      {data.map(cours => (
+        <Cours key={cours.id} title={cours.title} vignette={cours.img} />
+      ))}
     </>
   )
 }
 
 export default App
-
-
-
-/*
-<div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-*/

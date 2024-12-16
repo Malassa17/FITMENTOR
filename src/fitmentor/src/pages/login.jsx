@@ -1,117 +1,97 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+var currentClient = null
+
+function setCurrentClient(client) {
+  currentClient = client
+}
+
+function getCurrentClient() {
+  return currentClient
+}
+
 const Login = () => {
-
-    const [email, setEmail] = useState('')
+    const [identifier, setIdentifier] = useState('')
     const [password, setPassword] = useState('')
-    const [emailError, setEmailError] = useState('')
+    const [identifierError, setIdentifierError] = useState('')
     const [passwordError, setPasswordError] = useState('')
-
     const navigate = useNavigate()
 
-    const onButtonClick = () => {
-
-        setEmailError('')
+    const handleLogin = async () => {
+        setIdentifierError('')
         setPasswordError('')
 
-        if ('' === email) {
-            setEmailError('Please enter your email')
+        if (identifier === '') {
+            setIdentifierError('Veuillez entrer un identifiant')
             return
         }
 
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-            setEmailError('Please enter a valid email')
+        if (password === '') {
+            setPasswordError('Veuillez entrer un mot de passe')
             return
         }
 
-        if ('' === password) {
-            setPasswordError('Please enter a password')
-            return
-        }
+        try {
+            const response = await axios.post('http://localhost:8080/login', {
+                identifier: identifier,
+                pass: password,
+            })
 
-        /*
-        if (password.length < 7) {
-            setPasswordError('The password must be 8 characters or longer')
-            return
-        }
-        */
-        
-        //logIn()
+            const result = response.data
 
-        fetch('http://localhost:8080/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-        })
-        .then((r) => r.json())
-        .then((r) => {
-            if ('success' === r.message) {
-            localStorage.setItem('user', JSON.stringify({ email, token: r.token }))
-            props.setLoggedIn(true)
-            props.setEmail(email)
-            navigate('/')
+            if (result === 'Credentials ok, connecting ...') {
+                console.log('ALLOK')
+                navigate('/')
+                setCurrentClient(result.id)
+                console.log(currentClient)  //TODO UNDEFINED
             } else {
-            window.alert('Wrong email or password')
+                console.log('NOTOK :', result)
+                setPasswordError('Mauvais identifiants, veuillez réessayer')
             }
-        })
-
+        } catch (error) {
+            console.error('Erreur lors de la connexion', error)
+            setPasswordError('Erreur lors de la connexion. Veuillez réessayer plus tard')
+        }
     }
 
     return (
         <div className={'mainContainer'}>
-          <div className={'titleContainer'}>
-            <div>Login</div>
-          </div>
-          <br />
-          <div className={'inputContainer'}>
-            <input
-              value={email}
-              placeholder="Enter your email here"
-              onChange={(ev) => setEmail(ev.target.value)}
-              className={'inputBox'}
-            />
-            <label className="errorLabel">{emailError}</label>
-          </div>
-          <br />
-          <div className={'inputContainer'}>
-            <input
-              value={password}
-              placeholder="Enter your password here"
-              onChange={(ev) => setPassword(ev.target.value)}
-              className={'inputBox'}
-            />
-            <label className="errorLabel">{passwordError}</label>
-          </div>
-          <br />
-          <div className={'inputContainer'}>
-            <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
-          </div>
+            <div className={'titleContainer'}>
+                <div>Se connecter</div>
+            </div>
+            <br />
+            <div className={'inputContainer'}>
+                <input
+                    value={identifier}
+                    placeholder="Identifiant"
+                    onChange={(ev) => setIdentifier(ev.target.value)}
+                    className={'inputBox'}
+                />
+                <label className="errorLabel">{identifierError}</label>
+            </div>
+            <br />
+            <div className={'inputContainer'}>
+                <input
+                    value={password}
+                    placeholder="Mot de passe"
+                    onChange={(ev) => setPassword(ev.target.value)}
+                    className={'inputBox'}
+                />
+                <label className="errorLabel">{passwordError}</label>
+            </div>
+            <br />
+            <div className={'inputContainer'}>
+                <input
+                    className={'inputButton'}
+                    type="button"
+                    onClick={handleLogin} 
+                    value={'Se connecter'}
+                />
+            </div>
         </div>
-      )
+    )
 }
-  
-  const logIn = () => {
-    fetch('http://localhost:8080/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((r) => r.json())
-      .then((r) => {
-        if ('success' === r.message) {
-          localStorage.setItem('user', JSON.stringify({ email, token: r.token }))
-          props.setLoggedIn(true)
-          props.setEmail(email)
-          navigate('/')
-        } else {
-          window.alert('Wrong email or password')
-        }
-      })
-    }   
 
 export default Login
