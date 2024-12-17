@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './login.css'
 
 var currentClient = null
 
@@ -56,40 +57,45 @@ const Login = () => {
         }
     }
 
+
+    //TODO RENDRE LE FORM PAREIL QUE SIGNUP
+
     return (
-        <div className={'mainContainer'}>
-            <div className={'titleContainer'}>
+        <div className="login-container">
+            <div className="title-container">
                 <div>Se connecter</div>
             </div>
             <br />
-            <div className={'inputContainer'}>
+            <div className="input-group">
                 <input
+                    type="text"
+                    id="identifier"
                     value={identifier}
                     placeholder="Identifiant"
                     onChange={(ev) => setIdentifier(ev.target.value)}
-                    className={'inputBox'}
+                    className="input"
                 />
                 <label className="errorLabel">{identifierError}</label>
             </div>
             <br />
-            <div className={'inputContainer'}>
+            <div className={'input-group'}>
                 <input
+                    type="password"
+                    id="password"
                     value={password}
                     placeholder="Mot de passe"
                     onChange={(ev) => setPassword(ev.target.value)}
-                    className={'inputBox'}
+                    className="input"
                 />
                 <label className="errorLabel">{passwordError}</label>
             </div>
             <br />
-            <div className={'inputContainer'}>
-                <input
-                    className={'inputButton'}
-                    type="button"
-                    onClick={handleLogin} 
-                    value={'Se connecter'}
-                />
-            </div>
+            <input
+                className="login-button"
+                type="submit"
+                onClick={handleLogin} 
+                value="Se connecter"
+            />
         </div>
     )
 }

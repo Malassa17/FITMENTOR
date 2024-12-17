@@ -7,25 +7,32 @@ const MesCours = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8080/client/1/mescours').then(function (response) {
-          setData(response.data)
-          console.log(data)
-        })
-    }, [])
+
+        const fetchUsersData = async () => {
+
+            const response = await axios.get('http://localhost:8080/client/1/mescours')
+
+            setData(response.data)
+
+        }
+
+        fetchUsersData();
+
+        console.log(data)
+
+    }, []);
 
     return (
-    <>
-        <h1>Mes Cours</h1>
-        <div className="MesCours">
-            <header className="MesCours-header">
-            <span>Voici tous vos cours : </span>
-
-            {data.map(cours => (
-                <Cours key={cours.id} title={cours.title} vignette={cours.img} />   //TODO FAIRE EN SORTE QUE LES COURS S'AFFICHENT
-            ))}
-            </header>
-        </div>
-    </>
+        <>
+            <h1>Mes Cours :</h1>
+            {data.length > 0 ? (
+                data.map(cours => (
+                    <Cours key={cours.id} title={cours.title} vignette={cours.img} />
+                ))
+            ) : (
+                <p>Aucun cours trouvé.</p>
+            )}
+        </>
     )
 }
 

@@ -124,9 +124,10 @@ export async function getObtenus(id,idClient){
 /*Get tous les cours achetés d'un client */
 export async function getAllObtenus(idClient){
     const [result] = await pool.query(`
-    SELECT cours
-    FROM obtenus
+    SELECT *
+    FROM obtenus,cours
     WHERE client = ?
+    AND cours = cours.id
     `, [idClient])
     return result[0]
 }
