@@ -1,58 +1,85 @@
 .signup-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
 }
 
 .signup-form {
-    display: flex;
-    flex-direction: column;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.signup-form h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
 }
 
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .input-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #555;
+    text-align: left;
 }
 
-.input {
+.input-group .input {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
+    padding: 0.8rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 1rem;
+}
+
+.input-group .input:focus {
+    outline: none;
+    border-color: #28a745; /* Vert pour le focus */
+}
+
+.input-group .error {
+    font-size: 0.8rem;
+    color: #D32F2F;
+    margin-top: 0.3rem;
+    display: block;
 }
 
 .signup-button {
-    padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #28a745; /* Vert pour le bouton */
     color: #fff;
     border: none;
+    padding: 0.8rem;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    width: 100%;
 }
 
 .signup-button:hover {
-    background-color: #218838;
+    background-color: #218838; /* Vert foncé au hover */
 }
 
 .success {
-    color: green;
-    font-weight: bold;
-    margin-top: 10px;
+    color: #4CAF50;
+    font-size: 0.9rem;
+    margin-top: 1rem;
 }
 
 .error {
-    color: red;
-    font-weight: bold;
-    margin-top: 5px;
+    color: #D32F2F;
+    font-size: 0.9rem;
+    margin-top: 1rem;
 }

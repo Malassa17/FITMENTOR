@@ -44,7 +44,7 @@ const Login = () => {
 
             if (result === 'Credentials ok, connecting ...') {
                 console.log('ALLOK')
-                navigate('/')
+                navigate('/home')
                 setCurrentClient(result.id)
                 console.log(currentClient)  //TODO UNDEFINED
             } else {
@@ -57,45 +57,49 @@ const Login = () => {
         }
     }
 
-
-    //TODO RENDRE LE FORM PAREIL QUE SIGNUP
-
     return (
-        <div className="login-container">
-            <div className="title-container">
-                <div>Se connecter</div>
+        <div className="auth-container">
+            <div className="auth-card">
+                <h2 className="auth-title">Se connecter</h2>
+                <form className="auth-form">
+                    <div className="form-group">
+                        <label htmlFor="identifier" className="form-label">Identifiant</label>
+                        <input
+                            type="text"
+                            id="identifier"
+                            value={identifier}
+                            placeholder="Entrez votre identifiant"
+                            onChange={(ev) => setIdentifier(ev.target.value)}
+                            className="form-input"
+                        />
+                        {identifierError && <span className="form-error">{identifierError}</span>}
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="password" className="form-label">Mot de passe</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            placeholder="Entrez votre mot de passe"
+                            onChange={(ev) => setPassword(ev.target.value)}
+                            className="form-input"
+                        />
+                        {passwordError && <span className="form-error">{passwordError}</span>}
+                    </div>
+
+                    <button
+                        type="button"
+                        className="auth-button"
+                        onClick={handleLogin}
+                    >
+                        Se connecter
+                    </button>
+                </form>
+                <p className="auth-footer">
+                    Pas encore de compte ? <a href="/signup" className="auth-link">Créer un compte</a>
+                </p>
             </div>
-            <br />
-            <div className="input-group">
-                <input
-                    type="text"
-                    id="identifier"
-                    value={identifier}
-                    placeholder="Identifiant"
-                    onChange={(ev) => setIdentifier(ev.target.value)}
-                    className="input"
-                />
-                <label className="errorLabel">{identifierError}</label>
-            </div>
-            <br />
-            <div className={'input-group'}>
-                <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    placeholder="Mot de passe"
-                    onChange={(ev) => setPassword(ev.target.value)}
-                    className="input"
-                />
-                <label className="errorLabel">{passwordError}</label>
-            </div>
-            <br />
-            <input
-                className="login-button"
-                type="submit"
-                onClick={handleLogin} 
-                value="Se connecter"
-            />
         </div>
     )
 }

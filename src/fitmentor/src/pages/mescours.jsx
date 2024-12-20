@@ -4,13 +4,15 @@ import Cours from '../components/AllCours'
 
 const MesCours = () => {
 
+    var id = 1 //todo getCurrentClient()
+
     const [data, setData] = useState([])
 
     useEffect(() => {
 
         const fetchUsersData = async () => {
 
-            const response = await axios.get('http://localhost:8080/client/1/mescours')
+            const response = await axios.get('http://localhost:8080/client/'+id+'/mescours')
 
             setData(response.data)
 

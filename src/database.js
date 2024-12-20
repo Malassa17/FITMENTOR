@@ -103,9 +103,10 @@ export async function getFavoris(id,idClient){
 /*Get tous les favoris d'un client */
 export async function getAllFavoris(idClient){
     const [result] = await pool.query(`
-    SELECT cours
-    FROM favoris
+    SELECT *
+    FROM favoris,cours
     WHERE client = ?
+    AND cours = cours.id
     `, [idClient])
     return result
 }

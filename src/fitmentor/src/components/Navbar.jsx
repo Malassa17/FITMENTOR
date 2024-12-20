@@ -6,6 +6,9 @@ const Navbar = () => {
         <>
             <Nav>
                 <NavMenu>
+                    <NavLink to="/home" activeStyle>
+                        Accueil
+                    </NavLink>
                     <NavLink to="/signup" activeStyle>
                         Créer un compte
                     </NavLink>

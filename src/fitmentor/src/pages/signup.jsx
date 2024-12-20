@@ -55,13 +55,14 @@ const SignupForm = () => {
 
     return (
         <div className="signup-container">
-            <h2>Inscription</h2>
             <form onSubmit={handleSignup} className="signup-form">
+                <h2>Inscription</h2>
                 <div className="input-group">
-                    <label htmlFor="identifier">Identifiant :</label>
+                    <label htmlFor="identifier">Identifiant</label>
                     <input
                         type="text"
                         id="identifier"
+                        placeholder="Entrez votre identifiant"
                         value={identifier}
                         onChange={(e) => setIdentifier(e.target.value)}
                         className="input"
@@ -69,10 +70,11 @@ const SignupForm = () => {
                     {identifierError && <span className="error">{identifierError}</span>}
                 </div>
                 <div className="input-group">
-                    <label htmlFor="password">Mot de passe :</label>
+                    <label htmlFor="password">Mot de passe</label>
                     <input
                         type="password"
                         id="password"
+                        placeholder="Entrez votre mot de passe"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className="input"
