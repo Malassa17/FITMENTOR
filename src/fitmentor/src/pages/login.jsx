@@ -1,23 +1,17 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ReactSession } from 'react-client-session'
 import './login.css'
 
-var currentClient = null
-
-function setCurrentClient(client) {
-  currentClient = client
-}
-
-function getCurrentClient() {
-  return currentClient
-}
+ReactSession.setStoreType("localStorage")
 
 const Login = () => {
     const [identifier, setIdentifier] = useState('')
     const [password, setPassword] = useState('')
     const [identifierError, setIdentifierError] = useState('')
     const [passwordError, setPasswordError] = useState('')
+    const [logged, setLogged] = useState(false)  //faire un render conditionnel pour le login
     const navigate = useNavigate()
 
     const handleLogin = async () => {
@@ -42,11 +36,12 @@ const Login = () => {
 
             const result = response.data
 
-            if (result === 'Credentials ok, connecting ...') {
+            if (result[1] === 'Credentials ok, connecting ...') {
                 console.log('ALLOK')
                 navigate('/home')
-                setCurrentClient(result.id)
-                console.log(currentClient)  //TODO UNDEFINED
+                ReactSession.set('identifier', result[0])
+                console.log('ID :', ReactSession.get('identifier'))
+                setLogged(true)
             } else {
                 console.log('NOTOK :', result)
                 setPasswordError('Mauvais identifiants, veuillez réessayer')

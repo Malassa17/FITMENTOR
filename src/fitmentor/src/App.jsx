@@ -20,10 +20,12 @@ import { useEffect, useState } from 'react';
 function App() {
 
   const [data, setData] = useState([])
+  const [rendered, setRendered] = useState(false)
 
     useEffect(() => {
         axios.get('http://localhost:8080/cours').then(function (response) {
           setData(response.data)
+          setRendered(true)
         })
     }, [])
 
@@ -41,11 +43,19 @@ function App() {
         </Routes>
       </Router>
 
+      {rendered ?
+      <></>
+      :
       <h1>Voici les cours offerts par nos coach de qualités : </h1>
+      }
 
-      {data.map(cours => (
+      {rendered ?
+      <></>
+      :
+      data.map(cours => (
         <Cours key={cours.id} title={cours.title} vignette={cours.img} />
-      ))}
+      ))
+      }
     </>
   )
 }

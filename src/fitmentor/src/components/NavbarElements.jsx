@@ -8,23 +8,30 @@ export const Nav = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0;
-    padding: 0 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
-    width: 100%;
     top: 0;
+    left: 0;
+    width: 100%; /* Barre étendue sur toute la largeur */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+`;
+
+export const NavContainer = styled.div`
+    width: 100%;
+    max-width: 1200px; /* Limiter la largeur maximale */
+    margin: 0 auto; /* Centrer le contenu */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
 `;
 
 export const NavLink = styled(Link)`
     color: #28a745;
-    display: flex;
-    align-items: center;
     text-decoration: none;
-    padding: 0 1rem;
     font-size: 1rem;
     font-weight: 500;
+    padding: 0 1rem;
     transition: all 0.3s ease-in-out;
     &:hover {
         color: #ffffff;
@@ -43,7 +50,6 @@ export const NavButton = styled(Link)`
     background: #28a745;
     color: #ffffff;
     padding: 0.5rem 1rem;
-    margin-left: 1rem;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
@@ -101,4 +107,11 @@ export const DropdownItem = styled(Link)`
         background: #28a745;
         color: #ffffff;
     }
+`;
+
+export const NavLogo = styled(Link)`
+    color: #28a745;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
 `;
