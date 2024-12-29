@@ -2,11 +2,11 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-} from 'react-router-dom';
+} from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
-import Cours from './components/AllCours';
-import OneCours from './components/OneCours';
+import Cours from './components/AllCours'
+import OneCours from './components/OneCours'
 
 import MesCours from './pages/mescours'
 import Favoris from './pages/favoris'
@@ -16,6 +16,8 @@ import Home from './pages/home'
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+
+/*Composant principal App. Il est rendu quand l'utilisateurs arrive sur le site. S'appuie sur les composants Navbar et Cours */
 
 function App() {
 
@@ -46,7 +48,7 @@ function App() {
       {rendered ?
       <></>
       :
-      <h1>Voici les cours offerts par nos coach de qualités : </h1>
+      <h1>Bienvenue sur FitMentor</h1>
       }
 
       {rendered ?

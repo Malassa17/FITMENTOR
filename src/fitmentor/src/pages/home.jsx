@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Cours from '../components/AllCours'
 import axios from 'axios'
 
+/*Page qui redirige l'utilisateurs vers l'accueil, pas possible de render le composant react App car on ne peut pas imbriquer
+plusieurs composant router (navbar) */
+
 const Home = () => {
 
     const [data, setData] = useState([])

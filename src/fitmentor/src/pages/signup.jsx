@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import './signup.css'
 
+/*Page de signup */
+
 const SignupForm = () => {
     const [identifier, setIdentifier] = useState('')
     const [password, setPassword] = useState('')

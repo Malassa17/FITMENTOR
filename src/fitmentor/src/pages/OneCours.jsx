@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import axios from 'axios'
 import OneCours from "../components/OneCours"
 
+/*Page de consultation d'un cours en particulier (s'appuie sur le composant /components/OneCours.jsx) */
+
 const OneCours = () => {
 
     const [data, setData] = useState([])

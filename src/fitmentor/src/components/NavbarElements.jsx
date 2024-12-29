@@ -2,6 +2,8 @@ import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 
+/*Fichier de style pour la barre de navigation */
+
 export const Nav = styled.nav`
     background: #ffffff;
     height: 70px;
@@ -11,15 +13,15 @@ export const Nav = styled.nav`
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Barre étendue sur toute la largeur */
+    width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 `;
 
 export const NavContainer = styled.div`
     width: 100%;
-    max-width: 1200px; /* Limiter la largeur maximale */
-    margin: 0 auto; /* Centrer le contenu */
+    max-width: 1200px;
+    margin: 0 auto; 
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Cours from '../components/AllCours'
 
+/*Page des favoris du client */
+
 const Favoris = () => {
 
     var id = 1 //todo getCurrentClient()

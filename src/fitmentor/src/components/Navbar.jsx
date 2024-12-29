@@ -1,6 +1,8 @@
 import React from "react"
 import { Nav, NavLink, NavMenu } from "./NavbarElements"
 
+/*Composant react qui représente le barre de navigation */
+
 const Navbar = () => {
     return (
         <>

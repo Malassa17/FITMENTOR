@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { ReactSession } from 'react-client-session'
 import './login.css'
 
+/*Page de login */
+
 ReactSession.setStoreType("localStorage")
 
 const Login = () => {

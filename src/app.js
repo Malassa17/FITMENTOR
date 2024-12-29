@@ -11,9 +11,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-/*Work in progress */
-//TODO REMPLACER idClient par GETCURRENTIDCLIENT !!!!!!!!!!!!!!!!!!!!!
-
 /////////////////METHODES GET////////////////////////////
 /*Dans cette section on retrouve les méthodes get au sens GET du protocole HTTP, elles s'appuient sur les méthodes get de database.js  
   Elle font aussis office de routes pour accéder aux différentes ressources. 

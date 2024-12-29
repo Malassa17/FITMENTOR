@@ -1,3 +1,5 @@
+/*Composant react qui représente un seul cours, utilisé dans /pages/OneCours.jsx */
+
 export default function OneCours({id,title,vignette,description,coach,price,irl,sport}) {
     return (
         <>

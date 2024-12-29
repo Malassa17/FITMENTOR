@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Cours from '../components/AllCours'
 
+/*Page des cours achetés par le clients */
+
 const MesCours = () => {
 
     var id = 1 //todo getCurrentClient()
