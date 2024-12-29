@@ -17,7 +17,7 @@ const Home = () => {
 
     return (
         <>
-            <h1>Voici les cours offerts par nos coach de qualités : </h1>
+            <h1>Bienvenue sur FitMentor</h1>
 
             {data.map(cours => (
                 <Cours key={cours.id} title={cours.title} vignette={cours.img} />

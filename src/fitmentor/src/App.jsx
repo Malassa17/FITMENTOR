@@ -36,12 +36,12 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/MesCours" element={<MesCours />} />
-          <Route path="/Favoris" element={<Favoris />} />
-          <Route path="/cours" element={<OneCours />}  />
+          <Route path="/home" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/mescours" element={<MesCours />} />
+          <Route path="/favoris" element={<Favoris />} />
+          <Route path="/cours/:id" element={<OneCours />}  />
         </Routes>
       </Router>
 

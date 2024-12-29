@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import axios from 'axios'
 import OneCours from "../components/OneCours"
 
@@ -7,9 +8,10 @@ import OneCours from "../components/OneCours"
 const OneCours = () => {
 
     const [data, setData] = useState([])
+    const { id } = useParams()
   
       useEffect(() => {
-          axios.get('http://localhost:8080/cours/1').then(function (response) {
+          axios.get('http://localhost:8080/cours/'+id).then(function (response) {
             setData(response.data)
           })
       }, [])
