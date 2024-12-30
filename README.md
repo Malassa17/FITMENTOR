@@ -48,3 +48,5 @@ captures à la racine de cette archive.
 
 Je suis en l'état satisfait des écrans visuellement. Cependant il reste comme vous le constaterez des réglages à faire pour que les résultats promis soient terminés lors de la livraison finale. 
 Ces réglages concerneront principalement la page de cours, pas encore fonctionnelle. Le visuel de l'accueil avec tous les cours affiché, pour rendre le tout plus ergonomique. 
+
+Vous pourrez retrouver le github de l'application à cette url : https://github.com/Malassa17/FITMENTOR
