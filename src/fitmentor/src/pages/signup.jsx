@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { ReactSession } from 'react-client-session'
 import './signup.css'
 
 /*Page de signup */
+
+ReactSession.setStoreType("localStorage")
+
+ReactSession.set('id', null)
+ReactSession.set('identifier', null)
 
 const SignupForm = () => {
     const [identifier, setIdentifier] = useState('')
@@ -42,7 +48,7 @@ const SignupForm = () => {
                 pass: password,
             })
 
-            if (response.data.success) { //donne forcement faux .....
+            if (response.data !== null) { //donne forcement faux .....
                 setSuccessMessage('Inscription réussie !')
                 setIdentifier('')
                 setPassword('')
@@ -55,7 +61,14 @@ const SignupForm = () => {
         }
     }
 
+    if (ReactSession.get('identifier') !== null){
+        return (
+            <><h1>Vous êtes connecté, bienvenue : {ReactSession.get('identifier')}</h1></>
+        )
+    }
+
     return (
+        <>
         <div className="signup-container">
             <form onSubmit={handleSignup} className="signup-form">
                 <h2>Inscription</h2>
@@ -90,6 +103,7 @@ const SignupForm = () => {
                 {errorMessage && <p className="error">{errorMessage}</p>}
             </form>
         </div>
+        </>
     )
 }
 

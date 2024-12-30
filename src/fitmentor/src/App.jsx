@@ -17,7 +17,7 @@ import Home from './pages/home'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-/*Composant principal App. Il est rendu quand l'utilisateurs arrive sur le site. S'appuie sur les composants Navbar et Cours */
+/*Composant principal App. Il est rendu quand l'utilisateurs arrive sur le site. S'appuie sur les composants Navbar et Cours (AllCours) */
 
 function App() {
 

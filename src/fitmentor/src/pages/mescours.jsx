@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { ReactSession } from 'react-client-session'
 import axios from 'axios'
 import Cours from '../components/AllCours'
 
 /*Page des cours achetés par le clients */
 
+ReactSession.setStoreType("localStorage")
+
+ReactSession.set('id', null)
+ReactSession.set('identifier', null)
+
 const MesCours = () => {
 
-    var id = 1 //todo getCurrentClient()
+    var id = ReactSession.get('id')
 
     const [data, setData] = useState([])
 
@@ -25,6 +31,12 @@ const MesCours = () => {
         console.log(data)
 
     }, []);
+
+    if (ReactSession.get('id') === null){
+        return (
+            <><h2>Vous n'êtes pas connecté, veuillez vous connecter pour afficher cette ressource ...</h2></>
+        )
+    }
 
     return (
         <>

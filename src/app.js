@@ -135,9 +135,10 @@ app.post('/login', async (req,res) => {
         return
     }
 
-    var id = client.identifier
+    var id = client.id
+    var identity = client.identifier
     var text = "Credentials ok, connecting ..."
-    res.send([id,text])
+    res.send([id,identity,text])
 })
 
 /*Post un coach */
