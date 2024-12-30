@@ -46,7 +46,6 @@ Il s'agit simplement de mettre à dispositon le code pour que vous puissiez vous
 J'ai donc pris soins de mettre à disposition des captures d'écrans de l'application en marche pour montrer le visuel en action de mon application. Captures que vous pourrez retrouver dans le dossier
 captures à la racine de cette archive.
 
-Je suis en l'état satisfait des écrans visuellement. Cependant il reste comme vous le constaterez des réglages à faire pour que les résultats promis soient terminés lors de la livraison finale. 
-Ces réglages concerneront principalement la page de cours, pas encore fonctionnelle. Le visuel de l'accueil avec tous les cours affiché, pour rendre le tout plus ergonomique. 
+Je suis en l'état satisfait de la plupart des écrans visuellement. Certains manquent pour le mooment de finitions. Il reste comme vous le constaterez des réglages à faire pour que les résultats promis soient terminés lors de la livraison finale. Ces réglages concerneront principalement la page de cours, pas encore fonctionnelle. Le visuel de l'accueil avec tous les cours affiché, pour rendre le tout plus ergonomique. La fonction de mettre en favoris, d'acheter le cours, et enfin de filtrer l'affichage des cours. 
 
 Vous pourrez retrouver le github de l'application à cette url : https://github.com/Malassa17/FITMENTOR
