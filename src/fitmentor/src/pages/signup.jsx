@@ -48,7 +48,7 @@ const SignupForm = () => {
                 pass: password,
             })
 
-            if (response.data !== null) { //donne forcement faux .....
+            if (response.data !== null) {
                 setSuccessMessage('Inscription réussie !')
                 setIdentifier('')
                 setPassword('')
