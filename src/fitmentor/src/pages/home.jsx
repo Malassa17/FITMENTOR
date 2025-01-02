@@ -15,12 +15,13 @@ const Home = () => {
         })
     }, [])
 
+
     return (
         <>
             <h1>Bienvenue sur FitMentor</h1>
 
             {data.map(cours => (
-                <Cours key={cours.id} title={cours.title} vignette={cours.img} />
+                <Cours key={cours.id} data={cours} />
             ))}
         </>
     )

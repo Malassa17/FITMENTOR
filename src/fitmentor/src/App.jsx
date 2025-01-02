@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
-import Cours from './components/AllCours'
 import OneCours from './components/OneCours'
 
 import MesCours from './pages/mescours'
@@ -14,22 +13,10 @@ import Signup from './pages/signup'
 import Login from './pages/login'
 import Home from './pages/home'
 
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-
-/*Composant principal App. Il est rendu quand l'utilisateurs arrive sur le site. S'appuie sur les composants Navbar et Cours (AllCours) */
+/*Composant principal App. Il est rendu quand l'utilisateurs arrive sur le site. S'appuie sur le composant Navbar 
+Il sert principalement de router pour l'ensemble des pages de l'application */
 
 function App() {
-
-  const [data, setData] = useState([])
-  const [rendered, setRendered] = useState(false)
-
-    useEffect(() => {
-        axios.get('http://localhost:8080/cours').then(function (response) {
-          setData(response.data)
-          setRendered(true)
-        })
-    }, [])
 
   return (
     <>
@@ -44,20 +31,6 @@ function App() {
           <Route path="/cours/:id" element={<OneCours />}  />
         </Routes>
       </Router>
-
-      {rendered ?
-      <></>
-      :
-      <h1>Bienvenue sur FitMentor</h1>
-      }
-
-      {rendered ?
-      <></>
-      :
-      data.map(cours => (
-        <Cours key={cours.id} title={cours.title} vignette={cours.img} />
-      ))
-      }
     </>
   )
 }

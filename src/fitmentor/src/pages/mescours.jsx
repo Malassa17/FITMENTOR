@@ -26,11 +26,9 @@ const MesCours = () => {
 
         }
 
-        fetchUsersData();
+        fetchUsersData()
 
-        console.log(data)
-
-    }, []);
+    }, [])
 
     if (ReactSession.get('id') === null){
         return (
