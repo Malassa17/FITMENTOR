@@ -16,6 +16,7 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [identifierError, setIdentifierError] = useState('')
     const [passwordError, setPasswordError] = useState('')
+    const [userData, setUserData] = useState([])
     const navigate = useNavigate()
 
     const handleLogin = async () => {
@@ -46,7 +47,6 @@ const Login = () => {
                 ReactSession.set('id', result[0])
                 ReactSession.set('identifier', result[1])
                 console.log('ID :', ReactSession.get('identifier'))
-                setLogged(true)
             } else {
                 console.log('NOTOK :', result)
                 setPasswordError('Mauvais identifiants, veuillez réessayer')
@@ -58,6 +58,7 @@ const Login = () => {
     }
 
     if (ReactSession.get('identifier') !== null){
+
         return (
             <><h1>Vous êtes connecté, bienvenue : {ReactSession.get('identifier')}</h1></>
         )

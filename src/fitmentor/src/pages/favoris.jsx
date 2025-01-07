@@ -41,7 +41,7 @@ const Favoris = () => {
             <h1>Mes Favoris :</h1>
             {data.length > 0 ? (
                 data.map(cours => (
-                    <Cours key={cours.id} title={cours.title} vignette={cours.img} />
+                    <Cours key={cours.id} data={cours} />
                 ))
             ) : (
                 <p>Aucun cours trouvé.</p>

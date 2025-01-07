@@ -130,7 +130,7 @@ export async function getAllObtenus(idClient){
     WHERE client = ?
     AND cours = cours.id
     `, [idClient])
-    return result[0]
+    return result
 }
 
 /*Get tous les contenus d'un cours */
@@ -140,7 +140,7 @@ export async function getContenus(idCours){
     FROM contenus
     WHERE cours = ?
     `, [idCours])
-    return result[0]
+    return result
 }
 
 //////////METHODES CREATE///////////////////////////

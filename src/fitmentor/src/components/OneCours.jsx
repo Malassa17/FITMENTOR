@@ -15,8 +15,55 @@ export default function OneCours() {
     const { id } = useParams()
     const [data, setData] = useState([])
     const [comments, setComments] = useState([])
+    const [oneComment, setOneComment] = useState('')
     const [contents, setContents] = useState([])
     const [achete, setAchete] = useState(false)
+
+    const handleAchete = async () => {
+
+        const response = await axios.post(`http://localhost:8080/client/mescours`, {
+            client: ReactSession.get('id'),
+            cours: id,
+        })
+
+        if (response.status === 201) {
+            alert('Achat confirmé')
+            setAchete(true)
+        }
+        else {
+            alert('Erreur lors de l\'achat')
+        }
+    }
+
+    const handleFavoris = async () => {
+
+        const response = await axios.post(`http://localhost:8080/client/favoris`, {
+            client: ReactSession.get('id'),
+            cours: id,
+        })
+
+        if (response.status === 201) {
+            alert('Ajouté aux favoris')
+        }
+        else {
+            alert('Erreur lors de l\'ajout aux favoris')
+        }
+    }
+
+    const handleComment = async () => {
+
+        const response = await axios.post(`http://localhost:8080/cours/comments`, {
+            comment: oneComment,
+            cours: id,
+        })
+
+        if (response.status === 201) {
+            alert('Commentaire posté')
+        }
+        else {
+            alert('Erreur lors du post du commentaire')
+        }
+    }
 
     useEffect(() => {
 
@@ -47,23 +94,12 @@ export default function OneCours() {
         const isAchete = async () => {
 
             const response = await axios.get(`http://localhost:8080/client/${ReactSession.get('id')}/mescours/${id}`)
+
+            console.log(response)
     
-            if (response.data.length !== 0) {
+            if (response !== null) { 
                 setAchete(true)
             }
-        }
-
-        const handleAchete = async () => {
-            alert('Achat confirmé')
-            setAchete(true)
-        }
-
-        const handleFavoris = async () => {
-            alert('Ajouté aux favoris')
-        }
-
-        const handleComment = async () => {
-            alert('Commentaire posté')
         }
 
         fetchUsersData()
@@ -85,16 +121,18 @@ export default function OneCours() {
                     {ReactSession.get('id') !== null ? (
                         <>
                             <div className="actions">
-                                <button className="button" onClick={1+1}>Acheter</button>
-                                <button className="button" onClick={1+1}>Mettre en favoris</button>
+                                <button className="button" onClick={handleAchete}>Acheter</button>
+                                <button className="button" onClick={handleFavoris}>Mettre en favoris</button>
                             </div>
                             <div className="comment-section">
                                 <input 
                                     className="input" 
                                     type="text" 
+                                    value={oneComment}
+                                    onChange={(ev) => setOneComment(ev.target.value)}
                                     placeholder="Partagez votre expérience"
                                 />
-                                <button className="button" onClick={1+1}>Poster</button>
+                                <button className="button" onClick={handleComment}>Poster</button>
                             </div>
                         </>
                     ) : (

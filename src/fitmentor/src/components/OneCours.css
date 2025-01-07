@@ -1,15 +1,17 @@
 .container {
     background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    margin: 2rem auto;
-    width: 90%;
-    max-width: 1200px;
+    border-radius: 0; /* Supprime les coins arrondis pour coller aux bords */
+    box-shadow: none; /* Supprime l'ombre pour un effet plein écran */
+    padding: 2rem; /* Uniformise le padding autour du contenu */
+    margin: 0; /* Supprime les marges */
+    width: 100%; /* Occupe toute la largeur de l'écran */
+    height: 100vh; /* Occupe toute la hauteur de l'écran */
     font-family: 'Arial', sans-serif;
     color: #333;
     line-height: 1.6;
+    box-sizing: border-box; /* Inclut le padding dans les dimensions totales */
 }
+
 
 .header {
     display: flex;

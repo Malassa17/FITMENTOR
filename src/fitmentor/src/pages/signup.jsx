@@ -48,7 +48,7 @@ const SignupForm = () => {
                 pass: password,
             })
 
-            if (response.data !== null) {
+            if (response.status === 201) {
                 setSuccessMessage('Inscription réussie !')
                 setIdentifier('')
                 setPassword('')
