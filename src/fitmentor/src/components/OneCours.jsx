@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { ReactSession } from 'react-client-session'
 import './OneCours.css'
 
@@ -51,6 +51,11 @@ export default function OneCours() {
     }
 
     const handleComment = async () => {
+
+        if(!achete) {
+            alert('Vous devez acheter le cours pour poster un commentaire')
+            return
+        }
 
         const response = await axios.post(`http://localhost:8080/cours/comments`, {
             comment: oneComment,
