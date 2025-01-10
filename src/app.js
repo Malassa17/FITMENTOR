@@ -9,7 +9,14 @@ import {getCours, getAllCours, createCours, getCoursBySport, createClient, getCl
 const app = express()
 
 app.use(express.json())
+app.use(express.static('dist'))
 app.use(cors())
+
+/*
+app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'))
+})
+*/
 
 /////////////////METHODES GET////////////////////////////
 /*Dans cette section on retrouve les méthodes get au sens GET du protocole HTTP, elles s'appuient sur les méthodes get de database.js  
@@ -183,6 +190,6 @@ app.use((err, req, res, next) => {
 })
 
 /*Ecoute sur le port 8080 des requêtes */
-app.listen(8080, () => {
+app.listen(process.env.PORT || 8080, () => {
     console.log("Server running on port 8080")
 })
