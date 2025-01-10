@@ -17,6 +17,7 @@ export default function OneCours() {
     const [comments, setComments] = useState([])
     const [oneComment, setOneComment] = useState('')
     const [contents, setContents] = useState([])
+    const [coach, setCoach] = useState([])
     const [achete, setAchete] = useState(false)
 
     const handleAchete = async () => {
@@ -70,6 +71,13 @@ export default function OneCours() {
         }
     }
 
+    async function fetchCoach(coach) {
+                
+        const response = await axios.get(`http://localhost:8080/coach/${coach}`)
+
+        setCoach(response.data)
+    }
+
     useEffect(() => {
 
         const fetchUsersData = async () => {
@@ -77,6 +85,8 @@ export default function OneCours() {
             const response = await axios.get(`http://localhost:8080/cours/${id}`)
 
             setData(response.data)
+
+            fetchCoach(response.data.coach)
 
         }
 
@@ -155,6 +165,9 @@ export default function OneCours() {
                 <h2>Informations complémentaires</h2>
                 <p>Type de sport : {data.sport}</p>
                 <p>{data.irl === 0 ? "Cours uniquement en ligne" : "Cours disponibles en présentiel"}</p>
+                <p>Coordonnées du coach : {coach.identifier}</p>
+                <p>Email : {coach.mail}</p>
+                <p>Téléphone : {coach.tel}</p>
             </div>
 
             <div className="content">
@@ -162,7 +175,7 @@ export default function OneCours() {
                 {achete ? (
                     contents.map(content => (
                         <ul className="content-list" key={content.id}>
-                            <li>{content.content}</li>
+                            <a>{content.content}</a>
                         </ul>
                     ))
                 ) : (
