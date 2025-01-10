@@ -34,7 +34,7 @@ const Login = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/login', {
+            const response = await axios.post('/login', {
                 identifier: identifier,
                 pass: password,
             })
@@ -42,13 +42,10 @@ const Login = () => {
             const result = response.data
 
             if (result[2] === 'Credentials ok, connecting ...') {
-                console.log('ALLOK')
                 navigate('/home')
                 ReactSession.set('id', result[0])
                 ReactSession.set('identifier', result[1])
-                console.log('ID :', ReactSession.get('identifier'))
             } else {
-                console.log('NOTOK :', result)
                 setPasswordError('Mauvais identifiants, veuillez réessayer')
             }
         } catch (error) {

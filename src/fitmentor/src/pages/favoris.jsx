@@ -20,7 +20,7 @@ const Favoris = () => {
 
         const fetchUsersData = async () => {
 
-            const response = await axios.get('http://localhost:8080/client/'+id+'/favoris')
+            const response = await axios.get('/client/'+id+'/favoris')
 
             setData(response.data)
 

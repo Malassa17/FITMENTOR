@@ -18,7 +18,7 @@ const Home = () => {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:8080/cours').then(function (response) {
+        axios.get('/cours').then(function (response) {
           setData(response.data)
         })
     }, [])
@@ -38,7 +38,6 @@ const Home = () => {
             />
 
             {data.map(cours => (
-                console.log(inputText),
                 <Cours key={cours.id} data={cours} input={inputText}/>
             ))}
         </>

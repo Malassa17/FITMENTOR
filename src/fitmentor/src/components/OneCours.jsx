@@ -22,7 +22,7 @@ export default function OneCours() {
 
     const handleAchete = async () => {
 
-        const response = await axios.post(`http://localhost:8080/client/mescours`, {
+        const response = await axios.post(`/client/mescours`, {
             client: ReactSession.get('id'),
             cours: id,
         })
@@ -38,7 +38,7 @@ export default function OneCours() {
 
     const handleFavoris = async () => {
 
-        const response = await axios.post(`http://localhost:8080/client/favoris`, {
+        const response = await axios.post(`/client/favoris`, {
             client: ReactSession.get('id'),
             cours: id,
         })
@@ -58,7 +58,7 @@ export default function OneCours() {
             return
         }
 
-        const response = await axios.post(`http://localhost:8080/cours/comments`, {
+        const response = await axios.post(`/cours/comments`, {
             comment: oneComment,
             cours: id,
         })
@@ -73,7 +73,7 @@ export default function OneCours() {
 
     async function fetchCoach(coach) {
                 
-        const response = await axios.get(`http://localhost:8080/coach/${coach}`)
+        const response = await axios.get(`/coach/${coach}`)
 
         setCoach(response.data)
     }
@@ -82,7 +82,7 @@ export default function OneCours() {
 
         const fetchUsersData = async () => {
 
-            const response = await axios.get(`http://localhost:8080/cours/${id}`)
+            const response = await axios.get(`/cours/${id}`)
 
             setData(response.data)
 
@@ -92,7 +92,7 @@ export default function OneCours() {
 
         const fetchComments = async () => {
 
-            const response = await axios.get(`http://localhost:8080/cours/${id}/comments`)
+            const response = await axios.get(`/cours/${id}/comments`)
 
             setComments(response.data)
 
@@ -100,7 +100,7 @@ export default function OneCours() {
 
         const fetchContents = async () => {
 
-            const response = await axios.get(`http://localhost:8080/mescours/content/${id}`)
+            const response = await axios.get(`/mescours/content/${id}`)
 
             setContents(response.data)
 
@@ -108,7 +108,7 @@ export default function OneCours() {
 
         const isAchete = async () => {
 
-            const response = await axios.get(`http://localhost:8080/client/${ReactSession.get('id')}/mescours/${id}`)
+            const response = await axios.get(`/client/${ReactSession.get('id')}/mescours/${id}`)
 
             console.log(response)
     

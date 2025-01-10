@@ -20,7 +20,7 @@ const MesCours = () => {
 
         const fetchUsersData = async () => {
 
-            const response = await axios.get('http://localhost:8080/client/'+id+'/mescours')
+            const response = await axios.get('/client/'+id+'/mescours')
 
             setData(response.data)
 

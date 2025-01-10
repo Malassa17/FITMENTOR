@@ -14,7 +14,7 @@ export default function Cours({data,input}) {
                 <div><Link to={`/cours/${data.id}`}>Voir le cours</Link> </div>
             </>
         )
-    }else if (data.sport.toLowerCase() === input) {
+    }else if (data.sport.toLowerCase().includes(input)) {
         return (
             <>
                 <h4>{data.title}</h4>
