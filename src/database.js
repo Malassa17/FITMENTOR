@@ -92,10 +92,10 @@ export async function getCommentaire(id,idCours){
 /*Get un favoris en particulier d'un client */
 export async function getFavoris(id,idClient){
     const [result] = await pool.query(`
-    SELECT cours
+    SELECT *
     FROM favoris
     WHERE client = ?
-    AND id = ?
+    AND cours = ?
     `, [idClient,id])
     return result[0]
 }

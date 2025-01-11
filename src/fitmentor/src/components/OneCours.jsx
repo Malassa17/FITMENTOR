@@ -35,9 +35,15 @@ export default function OneCours() {
     const [contents, setContents] = useState([])
     const [coach, setCoach] = useState([])
     const [achete, setAchete] = useState(false)
+    const [favoris, setFavoris] = useState(false)
 
     /*Logique effectuée quand est enclenchée l'action d'acheter un cours */
     const handleAchete = async () => {
+
+        if(achete) {
+            alert('Vous avez déjà acheté ce cours')
+            return
+        }
 
         const response = await axios.post(`/client/mescours`, {
             client: ReactSession.get('id'),
@@ -56,6 +62,11 @@ export default function OneCours() {
     /*Logique effectuée quand est enclenchée l'action de mettre un cours en favoris */
     const handleFavoris = async () => {
 
+        if(favoris) {
+            alert('Vous avez déjà mis ce cours en favoris')
+            return
+        }
+
         const response = await axios.post(`/client/favoris`, {
             client: ReactSession.get('id'),
             cours: id,
@@ -63,6 +74,7 @@ export default function OneCours() {
 
         if (response.status === 201) {
             alert('Ajouté aux favoris')
+            setFavoris(true)
         }
         else {
             alert('Erreur lors de l\'ajout aux favoris')
@@ -133,8 +145,6 @@ export default function OneCours() {
         const isAchete = async () => {
 
             const response = await axios.get(`/client/${ReactSession.get('id')}/mescours/${id}`)
-
-            console.log(response)
     
             if (response.data !== "") { 
                 setAchete(true)
@@ -144,12 +154,24 @@ export default function OneCours() {
             }
         }
 
+        /*Fonction qui permet de savoir si le cours a déjà été mis en favoris par le client */
+        const isFavoris = async () => {
+                
+            const response = await axios.get(`/client/${ReactSession.get('id')}/favoris/${id}`)
+
+            if (response.data !== "") { 
+                setFavoris(true)
+            }
+            else{
+                setFavoris(false)
+            }
+        }
+
         fetchData()
         fetchComments()
         fetchContents()
         isAchete()
-
-        console.log(achete)
+        isFavoris()
 
     }, [id])
 
@@ -201,7 +223,6 @@ export default function OneCours() {
             <div className="content">
                 <h2>Contenus du cours</h2>
                 {achete ? (
-                    console.log(achete),
                     contents.map(content => (
                         <ul className="content-list" key={content.id}>
                             <a>{content.content}</a>
