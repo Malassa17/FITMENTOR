@@ -63,57 +63,10 @@ export const NavButton = styled(Link)`
     }
 `;
 
-export const Bars = styled(FaBars)`
-    display: none;
-    color: #28a745;
-    @media screen and (max-width: 768px) {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 1.8rem;
-        cursor: pointer;
-    }
-`;
-
 export const NavMenu = styled.div`
     display: flex;
     align-items: center;
     @media screen and (max-width: 768px) {
         display: none;
     }
-`;
-
-export const DropdownMenu = styled.div`
-    display: none;
-    flex-direction: column;
-    background: #ffffff;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    @media screen and (max-width: 768px) {
-        display: flex;
-    }
-`;
-
-export const DropdownItem = styled(Link)`
-    color: #28a745;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-        background: #28a745;
-        color: #ffffff;
-    }
-`;
-
-export const NavLogo = styled(Link)`
-    color: #28a745;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
 `;

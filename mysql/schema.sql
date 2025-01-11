@@ -95,6 +95,7 @@ INSERT INTO cours (title, description, img, sport, price, irl, coach) VALUES ('C
 INSERT INTO cours (title, description, img, sport, price, irl, coach) VALUES ('Yoga : méditation', 'Cours de yoga pour apprendre à méditer', 'yoga.jpg', 'yoga', 50, 0, 2);
 INSERT INTO cours (title, description, img, sport, price, irl, coach) VALUES ('Callisthénie pour pratiquants avancés', 'Un approfondissement de la pratique pour passer au stade supérieur dans votre approche de la discipline', 'callisthenie.jpg', 'callisthenie', 75, 1, 2);  
 
+--Tous les contenus déjà enregistrés
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 1);
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 2);
 INSERT INTO contenus (content, cours) VALUES ('Lien pour le pdf', 2);

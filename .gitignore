@@ -2,5 +2,5 @@ src/.env
 src/build.sh
 src/.gitignore
 src/fitmentor/dist
-src/fitmentor/gitignore
+src/fitmentor/.gitignore
 src/dist

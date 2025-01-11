@@ -48,7 +48,7 @@
 
 .input-group .input:focus {
     outline: none;
-    border-color: #28a745; /* Vert pour le focus */
+    border-color: #28a745; 
 }
 
 .input-group .error {
@@ -59,7 +59,7 @@
 }
 
 .signup-button {
-    background-color: #28a745; /* Vert pour le bouton */
+    background-color: #28a745; 
     color: #fff;
     border: none;
     padding: 0.8rem;
@@ -71,7 +71,7 @@
 }
 
 .signup-button:hover {
-    background-color: #218838; /* Vert foncé au hover */
+    background-color: #218838; 
 }
 
 .success {

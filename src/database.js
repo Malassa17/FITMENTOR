@@ -114,10 +114,10 @@ export async function getAllFavoris(idClient){
 /*Get un cours acheté en particulier d'un client */
 export async function getObtenus(id,idClient){
     const [result] = await pool.query(`
-    SELECT cours
+    SELECT *
     FROM obtenus
     WHERE client = ?
-    AND id = ?
+    AND cours = ?
     `, [idClient, id])
     return result[0]
 }

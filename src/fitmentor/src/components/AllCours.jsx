@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import './AllCours.css'
 import imgFoot from '../../public/img/foot.jpg'
 import imgTennis from '../../public/img/tennis.jpg'
 import imgYoga from '../../public/img/yoga.jpg'
@@ -18,7 +19,8 @@ const images = {
 }
 
 /*Composant react qui représente un cours
-utilisé dans App.jsx pour afficher tous les cours*/
+utilisé dans home.jsx pour afficher tous les cours
+mais aussi dans les pages de favoris et de mes cours*/
 
 export default function Cours({data,input}) {
 
@@ -35,9 +37,11 @@ export default function Cours({data,input}) {
     }else if (data.sport.toLowerCase().includes(input)) {
         return (
             <>
-                <h4>{data.title}</h4>
-                <img src={images[data.img]}/>  
-                <div><Link to={`/cours/${data.id}`}>Voir le cours</Link> </div>
+                <div className="item">
+                    <h4>{data.title}</h4>
+                    <img src={images[data.img]}/>  
+                    <div><Link to={`/cours/${data.id}`}>Voir le cours</Link> </div>
+                </div>
             </>
         )
     }

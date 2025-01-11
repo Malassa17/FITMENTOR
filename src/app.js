@@ -183,7 +183,7 @@ app.use((err, req, res, next) => {
     res.status(500).send("Error")
 })
 
-/*Ecoute sur le port 8080 des requêtes */
+/*Ecoute sur le port donné par le déploiement, par défaut écoute sur le port 8080*/
 app.listen(process.env.PORT || 8080, () => {
     console.log("Server running on port 8080")
 })

@@ -18,6 +18,7 @@ const Favoris = () => {
 
     useEffect(() => {
 
+        /*Fonction qui permet de récupérer les favoris du client */
         const fetchUsersData = async () => {
 
             const response = await axios.get('client/'+id+'/favoris')

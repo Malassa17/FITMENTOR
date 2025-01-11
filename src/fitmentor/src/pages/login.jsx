@@ -33,7 +33,8 @@ const Login = () => {
             return
         }
 
-        try {
+        try {   
+            /*Fonction qui permet de se connecter */
             const response = await axios.post('/login', {
                 identifier: identifier,
                 pass: password,

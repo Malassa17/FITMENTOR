@@ -34,8 +34,9 @@ export default function OneCours() {
     const [oneComment, setOneComment] = useState('')
     const [contents, setContents] = useState([])
     const [coach, setCoach] = useState([])
-    const [achete, setAchete] = useState(true)
+    const [achete, setAchete] = useState(false)
 
+    /*Logique effectuée quand est enclenchée l'action d'acheter un cours */
     const handleAchete = async () => {
 
         const response = await axios.post(`/client/mescours`, {
@@ -52,6 +53,7 @@ export default function OneCours() {
         }
     }
 
+    /*Logique effectuée quand est enclenchée l'action de mettre un cours en favoris */
     const handleFavoris = async () => {
 
         const response = await axios.post(`/client/favoris`, {
@@ -67,6 +69,7 @@ export default function OneCours() {
         }
     }
 
+    /*Logique effectuée quand est enclenchée l'action de poster un commentaire */
     const handleComment = async () => {
 
         if(!achete) {
@@ -87,6 +90,7 @@ export default function OneCours() {
         }
     }
 
+    /*Fonction qui permet de récupérer les informations du coach */
     async function fetchCoach(coach) {
                 
         const response = await axios.get(`/coach/${coach}`)
@@ -96,7 +100,8 @@ export default function OneCours() {
 
     useEffect(() => {
 
-        const fetchUsersData = async () => {
+        /*Fonction qui permet de récupérer les informations du cours */
+        const fetchData = async () => {
 
             const response = await axios.get(`/cours/${id}`)
 
@@ -106,6 +111,7 @@ export default function OneCours() {
 
         }
 
+        /*Fonction qui permet de récupérer les commentaires du cours */
         const fetchComments = async () => {
 
             const response = await axios.get(`/cours/${id}/comments`)
@@ -114,6 +120,7 @@ export default function OneCours() {
 
         }
 
+        /*Fonction qui permet de récupérer les contenus du cours */
         const fetchContents = async () => {
 
             const response = await axios.get(`/mescours/content/${id}`)
@@ -122,13 +129,14 @@ export default function OneCours() {
 
         }
 
+        /*Fonction qui permet de savoir si le cours a été acheté par le client */
         const isAchete = async () => {
 
             const response = await axios.get(`/client/${ReactSession.get('id')}/mescours/${id}`)
 
             console.log(response)
     
-            if (response.data === "") { 
+            if (response.data !== "") { 
                 setAchete(true)
             }
             else{
@@ -136,7 +144,7 @@ export default function OneCours() {
             }
         }
 
-        fetchUsersData()
+        fetchData()
         fetchComments()
         fetchContents()
         isAchete()
@@ -147,7 +155,7 @@ export default function OneCours() {
 
     return (
         <>  
-            <div className="container">
+            <div className="container grid">
             <div className="header">
                 <img src={images[data.img]} className="header-image" />
                 <div className="info">
@@ -182,7 +190,7 @@ export default function OneCours() {
             <div className="description">
                 <h2>Description</h2>
                 <p>{data.description}</p>
-                <h2>Informations complémentaires</h2>
+                <h3>Informations complémentaires</h3>
                 <p>Type de sport : {data.sport}</p>
                 <p>{data.irl === 0 ? "Cours uniquement en ligne" : "Cours disponibles en présentiel"}</p>
                 <h4>Coordonnées du coach : {coach.identifier}</h4>
@@ -191,8 +199,8 @@ export default function OneCours() {
             </div>
 
             <div className="content">
-                <h2>Contenus du cours :</h2>
-                {!achete ? (
+                <h2>Contenus du cours</h2>
+                {achete ? (
                     console.log(achete),
                     contents.map(content => (
                         <ul className="content-list" key={content.id}>

@@ -18,6 +18,7 @@ const MesCours = () => {
 
     useEffect(() => {
 
+        /*Fonction qui permet de récupérer les cours achetés par le client */
         const fetchUsersData = async () => {
 
             const response = await axios.get('/client/'+id+'/mescours')
