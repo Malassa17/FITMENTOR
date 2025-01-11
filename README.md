@@ -8,7 +8,7 @@ développeurs web, mais aussi des comédiens de voix off, entre autres. Notre pr
 d’application réside dans la même fonctionnalité, simplement les freelances seront ici des coachs
 sportifs, et les particuliers des clients voulant renforcer ou même découvrir une pratique sportive.
 Ce site web permettra aux clients de s’identifier puis de choisir parmi
-plusieurs catégories de sports prédéfinis les cours et les coachs qui leur semblent les plus
+plusieurs catégories de sports prédéfinis les cours qui leur semblent les plus
 adaptés pour eux à l’aide de filtres. L’application présentera ses cours à la manière par exemple
 de Youtube. Avec des miniatures que nous appellerons ici des vignettes et des titres. Pour faire
 un choix éclairé, les utilisateurs pourront laisser des commentaires sur les cours aux autres.
@@ -16,8 +16,7 @@ Après avoir fait leur choix, ils auront accès aux cours du coach sélectionné
 la page du cours directement.
 Ce projet met donc en valeur la pratique du sport, depuis chez soi ou aux alentours de chez soi
 en mettant en avant les sports individuels (plus adapté à ce format de cours particulier en ligne). Il
-permet aussi une source éventuelle de revenu pour les coachs, même si comme nous le
-détaillerons plus tard, il ne sera pas question dans le projet ici de mettre en place un système de
+permet aussi une source éventuelle de revenu pour les coachs, même s'il ne sera pas question dans le projet ici de mettre en place un système de
 paiement. Pour les utilisateurs, clients de mon application et des coachs qui postent leurs cours, il
 s’agit de leur faciliter l’accès à une pratique sportive. Imaginons qu’un client soit situé loin à la
 campagne, sans aucune possibilité d’avoir un club, un coach, une salle de sport à proximité.
@@ -35,17 +34,15 @@ profiter malgré sa situation d’une pratique sportive convenable.
 ### Dans le répertoire fitmentor
 - Un répertoire src/components qui contient tous les composants react
 - Un répertoire src/pages qui contients toutes les pages et leurs fichiers de style css
-- Un répertoire src/data qui contiendra toutes les images/vignettes de l'application
 - Un fichier main.jsx qui constitue le point d'entrée de l'application
 - Un fichier App.jsx qui constitue ce qu'affiche l'application quand l'utilisateur rentre pour la première fois sur le site
 
-Cette deuxième livraison de code vous donne l'occasion de regarder dans les détails mon travail fournit pour cette partie front-end de l'application.
-Dans les faits, elle n'est pas exécutable/testable de votre côté. La connexion à la base mysql est gérée par des variables d'environement que je ne partage pas encore. 
-Il s'agit simplement de mettre à dispositon le code pour que vous puissiez vous rendre compte de la manière dont est articulé le code pour faire fonctionner les visuels du site web. 
+Le site web déployé est disponible à cette url : https://fit-mentor-58c03730f873.herokuapp.com/
 
-J'ai donc pris soins de mettre à disposition des captures d'écrans de l'application en marche pour montrer le visuel en action de mon application. Captures que vous pourrez retrouver dans le dossier
-captures à la racine de cette archive.
+La base de données a été peuplé en conséquences pour que l'application soit testable.
 
-Je suis en l'état satisfait de la plupart des écrans visuellement. Certains manquent pour le mooment de finitions. Il reste comme vous le constaterez des réglages à faire pour que les résultats promis soient terminés lors de la livraison finale. Ces réglages concerneront principalement la page de cours, pas encore fonctionnelle. Le visuel de l'accueil avec tous les cours affiché, pour rendre le tout plus ergonomique. La fonction de mettre en favoris, d'acheter le cours, et enfin de filtrer l'affichage des cours. 
+Il vous sera possible de créer un compte, de vous connecter, de consulter l'offre des cours, de consulter un cours en particulier, d'ajouter ce cours en favoris, d'acheter ce cours.
+De poster un commentaire si vous avez acheté le cours en question. De trouver les cours par catégorie de sport au travers d'une barre de recherche (tennis, course, musculation, cyclisme, callisthenie, foot, yoga).
+Les contenus du cours sont présentés sous forme de liens mais rien ne se trouve derrière (je n'ai pas créé de véritables cours). 
 
 Vous pourrez retrouver le github de l'application à cette url : https://github.com/Malassa17/FITMENTOR
