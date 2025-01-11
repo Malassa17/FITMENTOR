@@ -20,7 +20,7 @@ const Favoris = () => {
 
         const fetchUsersData = async () => {
 
-            const response = await axios.get('/client/'+id+'/favoris')
+            const response = await axios.get('client/'+id+'/favoris')
 
             setData(response.data)
 
@@ -41,7 +41,7 @@ const Favoris = () => {
             <h1>Mes Favoris :</h1>
             {data.length > 0 ? (
                 data.map(cours => (
-                    <Cours key={cours.id} data={cours} />
+                    <Cours key={cours.id} data={cours} input={""}/>
                 ))
             ) : (
                 <p>Aucun cours trouvé.</p>

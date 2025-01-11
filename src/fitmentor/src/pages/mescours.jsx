@@ -41,7 +41,7 @@ const MesCours = () => {
             <h1>Mes Cours :</h1>
             {data.length > 0 ? (
                 data.map(cours => (
-                    <Cours key={cours.id} data={cours} />
+                    <Cours key={cours.id} data={cours} input={""}/>
                 ))
             ) : (
                 <p>Aucun cours trouvé.</p>

@@ -96,6 +96,8 @@ INSERT INTO cours (title, description, img, sport, price, irl, coach) VALUES ('Y
 INSERT INTO cours (title, description, img, sport, price, irl, coach) VALUES ('Callisthénie pour pratiquants avancés', 'Un approfondissement de la pratique pour passer au stade supérieur dans votre approche de la discipline', 'callisthenie.jpg', 'callisthenie', 75, 1, 2);  
 
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 1);
+INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 2);
+INSERT INTO contenus (content, cours) VALUES ('Lien pour le pdf', 2);
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 3);
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 4);
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 5);
@@ -107,6 +109,8 @@ INSERT INTO contenus (content, cours) VALUES ('Lien pour le pdf', 8);
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 9);
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 10);
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 11);
+INSERT INTO contenus (content, cours) VALUES ('Lien pour le premier pdf', 11);
+INSERT INTO contenus (content, cours) VALUES ('Lien pour le deuxième pdf', 11);
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 12);
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 13);
 INSERT INTO contenus (content, cours) VALUES ('Lien vers la vidéo', 14);

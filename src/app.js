@@ -12,12 +12,6 @@ app.use(express.json())
 app.use(express.static('dist'))
 app.use(cors())
 
-/*
-app.get('*', (req,res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'))
-})
-*/
-
 /////////////////METHODES GET////////////////////////////
 /*Dans cette section on retrouve les méthodes get au sens GET du protocole HTTP, elles s'appuient sur les méthodes get de database.js  
   Elle font aussis office de routes pour accéder aux différentes ressources. 

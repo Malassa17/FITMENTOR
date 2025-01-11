@@ -4,7 +4,23 @@ import { useParams } from 'react-router-dom'
 import { ReactSession } from 'react-client-session'
 import './OneCours.css'
 
-import vignette_foot from '../data/img/foot.jpg'
+import imgFoot from '../../public/img/foot.jpg'
+import imgTennis from '../../public/img/tennis.jpg'
+import imgYoga from '../../public/img/yoga.jpg'
+import imgMuscu from '../../public/img/musculation.jpg'
+import imgCallisthenie from '../../public/img/callisthenie.jpg'
+import imgVelo from '../../public/img/velo.jpg'
+import imgCourse from '../../public/img/course.jpg'
+
+const images = {
+    'foot.jpg': imgFoot,
+    'tennis.jpg': imgTennis,
+    'yoga.jpg': imgYoga,
+    'musculation.jpg': imgMuscu,
+    'callisthenie.jpg': imgCallisthenie,
+    'velo.jpg': imgVelo,
+    'course.jpg': imgCourse
+}
 
 /*Composant react qui représente un seul cours */
 
@@ -18,7 +34,7 @@ export default function OneCours() {
     const [oneComment, setOneComment] = useState('')
     const [contents, setContents] = useState([])
     const [coach, setCoach] = useState([])
-    const [achete, setAchete] = useState(false)
+    const [achete, setAchete] = useState(true)
 
     const handleAchete = async () => {
 
@@ -112,8 +128,11 @@ export default function OneCours() {
 
             console.log(response)
     
-            if (response !== null) { 
+            if (response.data === "") { 
                 setAchete(true)
+            }
+            else{
+                setAchete(false)
             }
         }
 
@@ -122,15 +141,16 @@ export default function OneCours() {
         fetchContents()
         isAchete()
 
+        console.log(achete)
+
     }, [id])
 
     return (
         <>  
             <div className="container">
             <div className="header">
-                <img src={vignette_foot} className="header-image" />
+                <img src={images[data.img]} className="header-image" />
                 <div className="info">
-                    <h3 className="info-title">Voici plus de détails sur le cours :</h3>
                     <h2 className="info-course-title">{data.title}</h2>
                     <p className="price">Prix du cours : {data.price} €</p>
                     {ReactSession.get('id') !== null ? (
@@ -165,14 +185,15 @@ export default function OneCours() {
                 <h2>Informations complémentaires</h2>
                 <p>Type de sport : {data.sport}</p>
                 <p>{data.irl === 0 ? "Cours uniquement en ligne" : "Cours disponibles en présentiel"}</p>
-                <p>Coordonnées du coach : {coach.identifier}</p>
+                <h4>Coordonnées du coach : {coach.identifier}</h4>
                 <p>Email : {coach.mail}</p>
                 <p>Téléphone : {coach.tel}</p>
             </div>
 
             <div className="content">
                 <h2>Contenus du cours :</h2>
-                {achete ? (
+                {!achete ? (
+                    console.log(achete),
                     contents.map(content => (
                         <ul className="content-list" key={content.id}>
                             <a>{content.content}</a>
