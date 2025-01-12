@@ -81,6 +81,15 @@ export default function OneCours() {
         }
     }
 
+    /*Fonction qui permet de récupérer les commentaires du cours */
+    const fetchComments = async () => {
+
+        const response = await axios.get(`/cours/${id}/comments`)
+
+        setComments(response.data)
+
+    }
+
     /*Logique effectuée quand est enclenchée l'action de poster un commentaire */
     const handleComment = async () => {
 
@@ -96,6 +105,7 @@ export default function OneCours() {
 
         if (response.status === 201) {
             alert('Commentaire posté')
+            fetchComments()
         }
         else {
             alert('Erreur lors du post du commentaire')
@@ -120,15 +130,6 @@ export default function OneCours() {
             setData(response.data)
 
             fetchCoach(response.data.coach)
-
-        }
-
-        /*Fonction qui permet de récupérer les commentaires du cours */
-        const fetchComments = async () => {
-
-            const response = await axios.get(`/cours/${id}/comments`)
-
-            setComments(response.data)
 
         }
 

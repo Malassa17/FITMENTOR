@@ -117,13 +117,16 @@ app.post("/cours", async (req,res) => {
 app.post("/signup", async (req,res) => {
     const {identifier,pass} = req.body
     const id = await getClientByIdentifier(identifier)
-    if (id !== null){
-        throw new Error("Username already exists")
-    }
-    else{
+    if(id === undefined){
         const hash = await bcrypt.hash(pass, 13)
         const client = await createClient(identifier,hash)
         res.status(201).send(client) 
+    }
+    else if (id.identifier === identifier){
+        throw new Error("Username already exists")
+    }
+    else{
+        throw new Error("Error")
     }
 })
 
