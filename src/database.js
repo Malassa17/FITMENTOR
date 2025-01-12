@@ -208,3 +208,16 @@ export async function createContenus(content,cours){
     `, [content,cours])
     return getContenus(result.cours)
 }
+
+//////////METHODES DELETE///////////////////////////
+/*Dans cette sections se trouvent les méthodes dites delete -> qui font des delete des éléments crées */
+
+/*Delete un favoris */
+export async function deleteFavoris(id,idClient){
+    const [result] = await pool.query(`
+    DELETE FROM favoris
+    WHERE client = ?
+    AND cours = ?
+    `, [idClient,id])
+    return result
+}

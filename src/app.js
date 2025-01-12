@@ -1,7 +1,7 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import cors from 'cors'
-import {getCours, getAllCours, createCours, getCoursBySport, createClient, getClient, getCommentaire, getCoach, createCoach, getAllCommentaires, createCommentaire, getAllFavoris, getFavoris, createFavoris, getAllObtenus, getObtenus, createObtenus, getContenus, createContenus, getClientByIdentifier} from './database.js'
+import {getCours, getAllCours, createCours, getCoursBySport, createClient, getClient, getCommentaire, getCoach, createCoach, getAllCommentaires, createCommentaire, getAllFavoris, getFavoris, createFavoris, getAllObtenus, getObtenus, createObtenus, getContenus, createContenus, getClientByIdentifier, deleteFavoris} from './database.js'
 
 /*Point d'entrée de l'application.
   Ici on retrouve la mise en place du serveur express basé sur node.js ainsi que les routes qui constituent le back-end de l'application. */
@@ -181,6 +181,17 @@ app.post("/mescours/content", async (req,res) => {
     const {content,cours} = req.body
     const contenus = await createContenus(content,cours)
     res.status(201).send(contenus)
+})
+
+/////////////////METHODES DELETE////////////////////////////
+/*Dans cette section on retrouve les méthodes delete au sens DELETE du protocole HTTP, elles s'appuient sur les méthodes delete de database.js */
+
+/*Delete un favoris */
+app.delete("/client/:idClient/favoris/:id", async (req,res) => {
+    const id = req.params.id
+    const idClient = req.params.idClient
+    const fav = await deleteFavoris(id,idClient)
+    res.status(200).send(fav)
 })
 
 /*Utilisation de la console pour rediriger l'information en cas d'erreur */

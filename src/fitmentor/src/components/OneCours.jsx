@@ -177,6 +177,7 @@ export default function OneCours() {
 
     return (
         <>  
+            <h1>Apprenez en plus</h1>
             <div className="container grid">
             <div className="header">
                 <img src={images[data.img]} className="header-image" />

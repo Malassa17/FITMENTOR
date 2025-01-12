@@ -16,6 +16,17 @@ const Favoris = () => {
 
     const [data, setData] = useState([])
 
+    /*Fonction qui permet de retirer un favoris */
+    const handleDelete = async () => {
+
+        const response = await axios.delete('client/'+id+'/favoris/'+data.id)
+
+        if (response.status === 200) {
+            alert('Favoris retiré !')
+            setData(data.filter(cours => cours.id !== null))
+        }
+    }
+
     useEffect(() => {
 
         /*Fonction qui permet de récupérer les favoris du client */
@@ -42,7 +53,9 @@ const Favoris = () => {
             <h1>Mes Favoris :</h1>
             {data.length > 0 ? (
                 data.map(cours => (
+                    <>
                     <Cours key={cours.id} data={cours} input={""}/>
+                    </>
                 ))
             ) : (
                 <p>Aucun cours trouvé.</p>
